@@ -1,30 +1,23 @@
-import { defineRouter } from '#q-app/wrappers'
-import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
-import routes from './routes'
+import { defineRouter } from '#q-app/wrappers';  // Importation spécifique à Quasar
+import { createRouter, createWebHistory, createWebHashHistory, createMemoryHistory } from 'vue-router';  // Imports Vue Router
+import routes from './routes';  // Importation des routes définies précédemment
 
 /*
- * If not building with SSR mode, you can
- * directly export the Router instantiation;
- *
- * The function below can be async too; either use
- * async/await or return a Promise which resolves
- * with the Router instance.
+ * Le mode d'historique dépend de l'environnement de build.
+ * On choisit un mode d'historique basé sur l'environnement (SSR ou non).
+ * Si le serveur est activé, on utilise `createMemoryHistory`, sinon on choisit entre `createWebHistory` ou `createWebHashHistory`.
  */
-
-export default defineRouter(function (/* { store, ssrContext } */) {
+export default defineRouter(function () {
   const createHistory = process.env.SERVER
-    ? createMemoryHistory
-    : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory)
+    ? createMemoryHistory  // Utilisé en SSR (Server-Side Rendering)
+    : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory);  // Choix du mode d'historique
 
+  // Configuration du routeur
   const Router = createRouter({
-    scrollBehavior: () => ({ left: 0, top: 0 }),
-    routes,
+    history: createHistory(process.env.VUE_ROUTER_BASE),  // Utilisation du mode d'historique choisi
+    routes,  // Définition des routes
+    scrollBehavior: () => ({ left: 0, top: 0 })  // Réinitialisation du scroll à chaque changement de route
+  });
 
-    // Leave this as is and make changes in quasar.conf.js instead!
-    // quasar.conf.js -> build -> vueRouterMode
-    // quasar.conf.js -> build -> publicPath
-    history: createHistory(process.env.VUE_ROUTER_BASE)
-  })
-
-  return Router
-})
+  return Router;
+});
