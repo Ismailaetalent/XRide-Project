@@ -1,0 +1,8 @@
+./anywayride-back/node_modules
+./anywayride-front/node_modules
+
+../anywayride-back/node_modules
+../anywayride-front/node_modules
+
+anywayride-back/node_modules
+anywayride-front/node_modules
