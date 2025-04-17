@@ -1,86 +1,159 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <!-- En-tête avec barre de navigation -->
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
-        <q-toolbar-title>
-          <q-btn flat to="/" label="AnywayRide" />
-        </q-toolbar-title>
+        <q-btn flat dense round icon="menu" @click="toggleLeftDrawer" />
+        <q-toolbar-title>AnyWayRide</q-toolbar-title>
         <q-space />
-        <q-btn flat to="/register" label="S'inscrire" />
-        <q-btn flat to="/login" label="Se connecter" />
         <q-btn
-          v-if="isAuthenticated"
+          v-if="!authStore.isAuthenticated"
           flat
-          to="/voitures"
-          label="Gérer les voitures"
+          label="Connexion"
+          to="/login"
+          aria-label="Aller à la page de connexion"
         />
         <q-btn
-          v-if="isAuthenticated"
+          v-if="!authStore.isAuthenticated"
           flat
-          to="/type-voitures"
-          label="Gérer les types"
+          label="Inscription"
+          to="/register/passager"
+          aria-label="Aller à la page d’inscription"
         />
         <q-btn
-          v-if="isAuthenticated"
+          v-if="authStore.isAuthenticated"
           flat
-          to="/users"
-          label="Gérer les utilisateurs"
-        />
-        <q-btn
-          v-if="isAuthenticated"
-          flat
-          @click="logout"
           label="Déconnexion"
-          icon="logout"
+          @click="logout"
+          aria-label="Se déconnecter"
         />
       </q-toolbar>
     </q-header>
 
-    <!-- Conteneur des pages -->
+    <q-drawer v-model="leftDrawerOpen">
+      <q-list>
+        <q-item-label header>Menu</q-item-label>
+
+        <!-- Non-authentifié -->
+        <template v-if="!authStore.isAuthenticated">
+          <q-item to="/" exact>
+            <q-item-section avatar>
+              <q-icon name="home" />
+            </q-item-section>
+            <q-item-section>Accueil</q-item-section>
+          </q-item>
+          <q-item to="/passager">
+            <q-item-section avatar>
+              <q-icon name="person" />
+            </q-item-section>
+            <q-item-section>Service Passager</q-item-section>
+          </q-item>
+          <q-item to="/chauffeur">
+            <q-item-section avatar>
+              <q-icon name="directions_car" />
+            </q-item-section>
+            <q-item-section>Services Chauffeur</q-item-section>
+          </q-item>
+        </template>
+
+        <!-- Passager authentifié -->
+        <template v-if="authStore.isAuthenticated && authStore.userType === 'PASSAGER'">
+          <q-item to="/map">
+            <q-item-section avatar>
+              <q-icon name="map" />
+            </q-item-section>
+            <q-item-section>Rechercher un trajet</q-item-section>
+          </q-item>
+          <!-- Optionnel : Décommenter si implémenté -->
+           <q-item to="/my-trips">
+            <q-item-section avatar>
+              <q-icon name="history" />
+            </q-item-section>
+            <q-item-section>Mes trajets</q-item-section>
+          </q-item> 
+        </template>
+
+        <!-- Chauffeur authentifié -->
+        <template v-if="authStore.isAuthenticated && authStore.userType === 'CHAUFFEUR'">
+          <q-item to="/driver-dashboard">
+            <q-item-section avatar>
+              <q-icon name="dashboard" />
+            </q-item-section>
+            <q-item-section>Tableau de bord</q-item-section>
+          </q-item>
+          <!-- Optionnel : Décommenter si implémenté -->
+          <q-item to="/my-vehicles">
+            <q-item-section avatar>
+              <q-icon name="directions_car" />
+            </q-item-section>
+            <q-item-section>Mes véhicules</q-item-section>
+          </q-item> 
+        </template>
+
+        <!-- Admin authentifié -->
+        <template v-if="authStore.isAuthenticated && authStore.userType === 'ADMIN'">
+          <q-item to="/users">
+            <q-item-section avatar>
+              <q-icon name="group" />
+            </q-item-section>
+            <q-item-section>Gestion des utilisateurs</q-item-section>
+          </q-item>
+          <!-- Optionnel : Décommenter si implémenté -->
+          <q-item to="/reports">
+            <q-item-section avatar>
+              <q-icon name="assessment" />
+            </q-item-section>
+            <q-item-section>Rapports</q-item-section>
+          </q-item> 
+        </template>
+      </q-list>
+    </q-drawer>
+
     <q-page-container>
-      <router-view v-slot="{ Component }">
-        <transition name="fade" mode="out-in">
-          <component :is="Component" />
-        </transition>
-      </router-view>
+      <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
-import { computed } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import { Notify } from 'quasar';
+import { useAuthStore } from './store/auth';
+import { jwtDecode } from 'jwt-decode';
 
 export default {
   name: 'App',
   setup() {
+    const leftDrawerOpen = ref(false);
     const router = useRouter();
-    const isAuthenticated = computed(() => !!localStorage.getItem('token'));
+    const authStore = useAuthStore();
+
+    onMounted(() => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        try {
+          const decoded = jwtDecode(token);
+          authStore.login(token);
+        } catch (error) {
+          authStore.logout();
+        }
+      }
+    });
+
+    const toggleLeftDrawer = () => {
+      leftDrawerOpen.value = !leftDrawerOpen.value;
+    };
 
     const logout = () => {
-      localStorage.removeItem('token');
-      Notify.create({
-        type: 'positive',
-        message: 'Déconnexion réussie',
-        position: 'top',
-      });
+      authStore.logout();
       router.push('/login');
     };
 
-    return { isAuthenticated, logout };
+    return {
+      leftDrawerOpen,
+      authStore,
+      toggleLeftDrawer,
+      logout,
+    };
   },
 };
 </script>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

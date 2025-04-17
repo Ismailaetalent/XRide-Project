@@ -1,21 +1,32 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import LandingPage from '../pages/LandingPage.vue';
-import Register from '../components/Register.vue';
+import WelcomeSection from '../components/WelcomeSection.vue';
+import PassagerSection from '../components/PassagerSection.vue';
+import ChauffeurSection from '../components/ChauffeurSection.vue';
 import Login from '../components/Login.vue';
-import VoitureManager from '../components/VoitureManager.vue';
-import TypeVoitureManager from '../components/TypeVoitureManager.vue';
-import UserManager from '../components/UserManager.vue';
+import Register from '../components/Register.vue';
+import Users from '../components/UserManager.vue';
+import DriverDashboard from '../pages/DriverDashboard.vue';
+import Map from '../pages/PassengerMap.vue';
+import { jwtDecode } from 'jwt-decode';
+import { useQuasar } from 'quasar';
 
 const routes = [
   {
     path: '/',
-    name: 'LandingPage',
-    component: LandingPage,
+    name: 'Welcome',
+    component: WelcomeSection,
   },
   {
-    path: '/register',
-    name: 'Register',
-    component: Register,
+    path: '/passager',
+    name: 'Passager',
+    component: PassagerSection,
+    meta: { allowedTypes: ['PASSAGER'] }, // Pas de requiresAuth pour permettre l'accès non authentifié
+  },
+  {
+    path: '/chauffeur',
+    name: 'Chauffeur',
+    component: ChauffeurSection,
+    meta: { allowedTypes: ['CHAUFFEUR'] },
   },
   {
     path: '/login',
@@ -23,22 +34,28 @@ const routes = [
     component: Login,
   },
   {
-    path: '/voitures',
-    name: 'VoitureManager',
-    component: VoitureManager,
-    meta: { requiresAuth: true },
-  },
-  {
-    path: '/type-voitures',
-    name: 'TypeVoitureManager',
-    component: TypeVoitureManager,
-    meta: { requiresAuth: true },
+    path: '/register/:typeUser(passager|chauffeur)?',
+    name: 'Register',
+    component: Register,
+    props: true,
   },
   {
     path: '/users',
-    name: 'UserManager',
-    component: UserManager,
-    meta: { requiresAuth: true },
+    name: 'Users',
+    component: Users,
+    meta: { requiresAuth: true, allowedTypes: ['ADMIN'] },
+  },
+  {
+    path: '/driver-dashboard',
+    name: 'DriverDashboard',
+    component: DriverDashboard,
+    meta: { requiresAuth: true, allowedTypes: ['CHAUFFEUR'] },
+  },
+  {
+    path: '/map',
+    name: 'Map',
+    component: Map,
+    meta: { requiresAuth: true, allowedTypes: ['PASSAGER'] },
   },
 ];
 
@@ -48,9 +65,46 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  const $q = useQuasar();
   const token = localStorage.getItem('token');
   if (to.meta.requiresAuth && !token) {
+    $q.notify({
+      type: 'warning',
+      message: 'Veuillez vous connecter pour accéder à cette page.',
+    });
     next('/login');
+  } else if (to.meta.allowedTypes && token) {
+    try {
+      const decoded = jwtDecode(token);
+      if (!to.meta.allowedTypes.includes(decoded.typeUser)) {
+        $q.notify({
+          type: 'negative',
+          message: 'Accès non autorisé pour votre type d’utilisateur.',
+        });
+        switch (decoded.typeUser) {
+          case 'ADMIN':
+            next('/users');
+            break;
+          case 'CHAUFFEUR':
+            next('/driver-dashboard');
+            break;
+          case 'PASSAGER':
+            next('/map');
+            break;
+          default:
+            next('/');
+        }
+      } else {
+        next();
+      }
+    } catch (error) {
+      $q.notify({
+        type: 'negative',
+        message: 'Session invalide. Veuillez vous reconnecter.',
+      });
+      localStorage.removeItem('token');
+      next('/login');
+    }
   } else {
     next();
   }

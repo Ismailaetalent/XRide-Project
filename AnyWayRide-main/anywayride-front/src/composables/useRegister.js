@@ -35,7 +35,7 @@ export function useRegister() {
       if (payload.typeUser !== 'ADMIN') delete payload.droits;
       if (payload.typeUser !== 'PASSAGER') delete payload.dateNaissance;
 
-      const response = await axios.post('/api/signup', payload);
+      const response = await axios.post('/signup', payload);
       localStorage.setItem('token', response.data.token);
       Notify.create({
         type: 'positive',

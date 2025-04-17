@@ -5,6 +5,7 @@ import { Quasar } from 'quasar';
 import router from './router'; // Importation de Vue Router
 import store from './store'; // Importation de Vuex
 import axios from 'axios';
+import { createPinia } from 'pinia';
 
 // Import icon libraries
 import '@quasar/extras/roboto-font-latin-ext/roboto-font-latin-ext.css';
@@ -43,7 +44,7 @@ axios.interceptors.request.use((config) => {
 
 // Créer l'application
 const myApp = createApp(App);
-
+myApp.use(createPinia())
 // Utiliser les plugins
 myApp.use(Quasar, {
   plugins: {

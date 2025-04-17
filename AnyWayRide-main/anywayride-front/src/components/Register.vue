@@ -2,28 +2,21 @@
   <div class="flex flex-center q-pa-md">
     <q-card class="q-pa-md q-ma-md" style="width: 100%; max-width: 600px;" bordered>
       <q-card-section>
-        <div class="text-h5 text-primary text-center q-mb-md">Inscription</div>
+        <div class="text-h5 text-primary text-center q-mb-md">
+          Inscription {{ typeUser === 'chauffeur' ? 'Chauffeur' : 'Passager' }}
+        </div>
       </q-card-section>
 
       <q-card-section>
         <q-form @submit="submit(form)" class="q-gutter-md">
           <!-- Champs communs -->
-          <user-base-fields
-            :form="form"
-            @update:form="form = $event"
-            @type-changed="resetSpecificFields"
-          />
+          <user-base-fields :form="form" @update:form="form = $event" />
 
           <!-- Champs spécifiques -->
           <chauffeur-fields
             v-if="form.typeUser === 'CHAUFFEUR'"
             :form="form"
             :type-voiture-options="typeVoitureOptions"
-            @update:form="form = $event"
-          />
-          <admin-fields
-            v-if="form.typeUser === 'ADMIN'"
-            :form="form"
             @update:form="form = $event"
           />
           <passager-fields
@@ -62,51 +55,65 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-import UserBaseFields from '../components/Register/UserBaseFields.vue';
-import ChauffeurFields from '../components/Register/ChauffeurFields.vue';
-import AdminFields from '../components/Register/AdminFields.vue';
-import PassagerFields from '../components/Register/PassengerFields.vue';
-import ThirdPartyButtons from '../components/ThirdPartyButtons.vue';
+import { ref, watch } from 'vue';
+import UserBaseFields from './Register/UserBaseFields.vue';
+import ChauffeurFields from './Register/ChauffeurFields.vue';
+import PassagerFields from './Register/PassengerFields.vue';
+import ThirdPartyButtons from './ThirdPartyButtons.vue';
 import { useRegister } from '../composables/useRegister';
 
 export default {
   components: {
     UserBaseFields,
     ChauffeurFields,
-    AdminFields,
     PassagerFields,
     ThirdPartyButtons,
   },
-  setup() {
+  props: {
+    typeUser: {
+      type: String,
+      default: 'passager',
+      validator: (val) => ['passager', 'chauffeur'].includes(val),
+    },
+  },
+  setup(props) {
     const form = ref({
       nom: '',
       email: '',
       motDePasse: '',
-      typeUser: '',
+      typeUser: props.typeUser === 'chauffeur' ? 'CHAUFFEUR' : 'PASSAGER',
       permis: '',
-      droits: { canModerate: false },
       dateNaissance: '',
       voitures: [],
     });
 
     const { typeVoitureOptions, loading, fetchTypeVoitures, submit } = useRegister();
 
+    // Charger les types de voitures au montage
     fetchTypeVoitures();
 
-    const resetSpecificFields = () => {
-      form.value.permis = '';
-      form.value.droits = { canModerate: false };
-      form.value.dateNaissance = '';
-      form.value.voitures = [];
-    };
+    // Surveiller les changements de props.typeUser
+    watch(
+      () => props.typeUser,
+      (newTypeUser) => {
+        // Réinitialiser le formulaire avec le nouveau type
+        form.value = {
+          nom: '',
+          email: '',
+          motDePasse: '',
+          typeUser: newTypeUser === 'chauffeur' ? 'CHAUFFEUR' : 'PASSAGER',
+          permis: '',
+          dateNaissance: '',
+          voitures: [],
+        };
+      }
+    );
 
     return {
       form,
       typeVoitureOptions,
       loading,
       submit,
-      resetSpecificFields,
     };
   },
 };
