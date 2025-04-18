@@ -5,7 +5,7 @@
         <q-btn flat dense round icon="menu" @click="toggleLeftDrawer" />
         <q-toolbar-title>AnyWayRide</q-toolbar-title>
         <q-space />
-        <q-btn
+        <!--<q-btn
           v-if="!authStore.isAuthenticated"
           flat
           label="Connexion"
@@ -18,7 +18,7 @@
           label="Inscription"
           to="/register/passager"
           aria-label="Aller à la page d’inscription"
-        />
+        />-->
         <q-btn
           v-if="authStore.isAuthenticated"
           flat
