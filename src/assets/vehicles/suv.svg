@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
+  <style>
+    .suv-body { fill: #6a6a6a; }
+    .suv-window { fill: #a1d6e2; }
+    .suv-wheel { fill: #333; }
+    .suv-wheel-rim { fill: #b0b0b0; }
+    .suv-light { fill: #f8f8f8; }
+    .suv-detail { fill: #505050; }
+    .suv-roof { fill: #808080; }
+  </style>
+  <path class="suv-body" d="M20,70h160c5,0,5-5,5-5l-10-25c0,0-15-15-35-15H60c-20,0-35,15-35,15l-10,25C15,65,15,70,20,70z"/>
+  <path class="suv-roof" d="M60,25h80v20c0,0-5,10-10,10H70c-5,0-10-10-10-10V25z"/>
+  <path class="suv-window" d="M65,25h70v17H65V25z"/>
+  <path class="suv-window" d="M140,25v17c0,0,5,5,10,5V35c0,0-2-10-10-10z"/>
+  <path class="suv-window" d="M60,25v17c0,0-5,5-10,5V35c0,0,2-10,10-10z"/>
+  <circle class="suv-wheel" cx="55" cy="70" r="14"/>
+  <circle class="suv-wheel" cx="145" cy="70" r="14"/>
+  <circle class="suv-wheel-rim" cx="55" cy="70" r="6"/>
+  <circle class="suv-wheel-rim" cx="145" cy="70" r="6"/>
+  <rect class="suv-light" x="20" y="45" width="12" height="6" rx="3"/>
+  <rect class="suv-light" x="168" y="45" width="12" height="6" rx="3"/>
+  <rect class="suv-detail" x="40" y="60" width="120" height="2"/>
+  <path class="suv-detail" d="M65,50h70c0,0,10,0,10,5H55c0-5,10-5,10-5z"/>
+</svg>

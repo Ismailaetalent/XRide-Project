@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
+  <style>
+    .car-body { fill: #a0c8e0; }
+    .car-window { fill: #a1d6e2; }
+    .car-wheel { fill: #333; }
+    .car-light { fill: #f8f8f8; }
+    .car-detail { fill: #7a8b99; }
+  </style>
+  <path class="car-body" d="M25,65h150c5,0,10-5,10-10l-8-20c0,0-15-10-30-10H53c-15,0-30,10-30,10l-8,20C15,60,20,65,25,65z"/>
+  <path class="car-window" d="M58,25h84v20H58V25z"/>
+  <path class="car-window" d="M147,25v20h18l-6-15c0,0-6-5-12-5z"/>
+  <path class="car-window" d="M53,25v20H35l6-15c0,0,6-5,12-5z"/>
+  <circle class="car-wheel" cx="60" cy="65" r="12"/>
+  <circle class="car-wheel" cx="140" cy="65" r="12"/>
+  <rect class="car-light" x="25" y="40" width="12" height="6" rx="3"/>
+  <rect class="car-light" x="163" y="40" width="12" height="6" rx="3"/>
+  <rect class="car-detail" x="75" y="55" width="50" height="2"/>
+  <rect class="car-detail" x="35" y="45" width="5" height="7" rx="2"/>
+  <rect class="car-detail" x="160" y="45" width="5" height="7" rx="2"/>
+</svg>

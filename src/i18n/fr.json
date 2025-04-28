@@ -1,0 +1,57 @@
+{
+  "common": {
+    "login": "Se connecter",
+    "signup": "S'inscrire",
+    "email": "Email",
+    "password": "Mot de passe",
+    "name": "Nom",
+    "phone": "Téléphone",
+    "search": "Rechercher",
+    "from": "De",
+    "to": "À",
+    "date": "Date",
+    "time": "Heure",
+    "passengers": "Passagers",
+    "luggage": "Bagages",
+    "book": "Réserver",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "submit": "Soumettre",
+    "loading": "Chargement...",
+    "continueWith": "Continuer avec",
+    "or": "ou"
+  },
+  "nav": {
+    "home": "Accueil",
+    "rides": "Trajets",
+    "support": "Support",
+    "destinations": "Nos destinations",
+    "forDrivers": "Pour les chauffeurs",
+    "forBusiness": "Pour les entreprises",
+    "forAgents": "Pour les agents",
+    "feedback": "Commentaires",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "settings": "Paramètres",
+    "profile": "Profil",
+    "logout": "Déconnexion"
+  },
+  "home": {
+    "title": "Transferts, trajets et livraison dans tous les pays",
+    "priceMatch": "Garantie du meilleur prix",
+    "priceMatchDesc": "Nous remboursons la différence de prix",
+    "freeWaiting": "Temps d'attente gratuit",
+    "freeWaitingDesc": "Nous accordons un temps d'attente gratuit de 60 minutes aux aéroports, tous les autres lieux comprennent 15 minutes d'attente gratuites",
+    "noHidden": "Pas de frais cachés",
+    "noHiddenDesc": "Taxes, péages et pourboires inclus",
+    "safeRides": "Trajets sécurisés",
+    "safeRidesDesc": "Nous sommes la plateforme où vous connaissez toujours votre transporteur directement. Tous les transporteurs sont soigneusement vérifiés",
+    "ourFleet": "Notre flotte"
+  },
+  "booking": {
+    "passengers": "Passagers",
+    "searchLocation": "Rechercher un lieu...",
+    "nearbyLocations": "Lieux à proximité",
+    "recommendedDestinations": "Destinations recommandées"
+  }
+}

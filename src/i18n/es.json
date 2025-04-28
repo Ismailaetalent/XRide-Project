@@ -1,0 +1,57 @@
+{
+  "common": {
+    "login": "Iniciar sesión",
+    "signup": "Registrarse",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "name": "Nombre",
+    "phone": "Teléfono",
+    "search": "Buscar",
+    "from": "Desde",
+    "to": "Hasta",
+    "date": "Fecha",
+    "time": "Hora",
+    "passengers": "Pasajeros",
+    "luggage": "Equipaje",
+    "book": "Reservar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "submit": "Enviar",
+    "loading": "Cargando...",
+    "continueWith": "Continuar con",
+    "or": "o"
+  },
+  "nav": {
+    "home": "Inicio",
+    "rides": "Viajes",
+    "support": "Soporte",
+    "destinations": "Nuestros Destinos",
+    "forDrivers": "Para Conductores",
+    "forBusiness": "Para Empresas",
+    "forAgents": "Para Agentes",
+    "feedback": "Comentarios",
+    "blog": "Blog",
+    "faq": "Preguntas Frecuentes",
+    "settings": "Ajustes",
+    "profile": "Perfil",
+    "logout": "Cerrar sesión"
+  },
+  "home": {
+    "title": "Traslados, viajes y entregas en todos los países",
+    "priceMatch": "Igualamos precios",
+    "priceMatchDesc": "Devolvemos la diferencia de precio",
+    "freeWaiting": "Tiempo de espera gratuito",
+    "freeWaitingDesc": "Permitimos tiempo de espera gratuito de 60 minutos en aeropuertos, todas las demás ubicaciones incluyen 15 minutos de espera gratuitos",
+    "noHidden": "Sin costes ocultos",
+    "noHiddenDesc": "Impuestos, peajes y propinas incluidos",
+    "safeRides": "Viajes seguros",
+    "safeRidesDesc": "Somos el mercado donde siempre conoces a tu transportista directamente. Todos los transportistas están verificados minuciosamente",
+    "ourFleet": "Nuestra flota"
+  },
+  "booking": {
+    "passengers": "Pasajeros",
+    "searchLocation": "Buscar ubicación...",
+    "nearbyLocations": "Ubicaciones cercanas",
+    "recommendedDestinations": "Destinos recomendados"
+  }
+}

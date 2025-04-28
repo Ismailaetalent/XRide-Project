@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
+  <style>
+    .van-body { fill: #f0f0f0; }
+    .van-front { fill: #e0e0e0; }
+    .van-window { fill: #a1d6e2; }
+    .van-wheel { fill: #333; }
+    .van-light { fill: #f8f8f8; }
+    .van-detail { fill: #707070; }
+  </style>
+  <path class="van-body" d="M25,30h100v40H25z"/>
+  <path class="van-front" d="M125,30h40c0,0,10,0,10,10v20c0,0,0,10-10,10h-40V30z"/>
+  <path class="van-window" d="M130,35h30c0,0,5,0,5,5v10H130V35z"/>
+  <path class="van-window" d="M80,35h40v15H80z"/>
+  <path class="van-window" d="M35,35h35v15H35z"/>
+  <circle class="van-wheel" cx="50" cy="70" r="10"/>
+  <circle class="van-wheel" cx="150" cy="70" r="10"/>
+  <rect class="van-light" x="25" y="50" width="8" height="5" rx="2.5"/>
+  <rect class="van-light" x="167" y="50" width="8" height="5" rx="2.5"/>
+  <rect class="van-detail" x="60" y="60" width="80" height="2"/>
+  <line class="van-detail" x1="25" y1="35" x2="125" y2="35" stroke="#707070" stroke-width="1"/>
+</svg>

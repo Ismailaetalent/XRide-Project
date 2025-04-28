@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
+  <style>
+    .car-body { fill: #1e1e1e; }
+    .car-window { fill: #a1d6e2; }
+    .car-wheel { fill: #333; }
+    .car-wheel-rim { fill: #a0a0a0; }
+    .car-light { fill: #f8f8f8; }
+    .car-detail { fill: #707070; }
+    .car-chrome { fill: #d0d0d0; }
+  </style>
+  <path class="car-body" d="M20,65h160c5,0,10-5,10-10l-10-20c0,0-15-12-35-12h-90c-20,0-35,12-35,12l-10,20C10,60,15,65,20,65z"/>
+  <path class="car-window" d="M55,23h90v22H55V23z"/>
+  <path class="car-window" d="M150,23v22h20l-7-17c0,0-6-5-13-5z"/>
+  <path class="car-window" d="M50,23v22H30l7-17c0,0,6-5,13-5z"/>
+  <circle class="car-wheel" cx="55" cy="65" r="12"/>
+  <circle class="car-wheel" cx="145" cy="65" r="12"/>
+  <circle class="car-wheel-rim" cx="55" cy="65" r="5"/>
+  <circle class="car-wheel-rim" cx="145" cy="65" r="5"/>
+  <rect class="car-light" x="20" y="40" width="14" height="6" rx="3"/>
+  <rect class="car-light" x="166" y="40" width="14" height="6" rx="3"/>
+  <rect class="car-chrome" x="30" y="55" width="140" height="2"/>
+  <rect class="car-detail" x="35" y="45" width="5" height="7" rx="2"/>
+  <rect class="car-detail" x="160" y="45" width="5" height="7" rx="2"/>
+  <rect class="car-chrome" x="75" y="50" width="50" height="1"/>
+</svg>

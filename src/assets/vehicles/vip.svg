@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
+  <style>
+    .car-body { fill: #222222; }
+    .car-window { fill: #a1d6e2; }
+    .car-wheel { fill: #333; }
+    .car-wheel-rim { fill: #d0d0d0; }
+    .car-light { fill: #f8f8f8; }
+    .car-detail { fill: #707070; }
+    .car-chrome { fill: #d0d0d0; }
+    .car-badge { fill: #f5a623; }
+  </style>
+  <path class="car-body" d="M15,65h170c7,0,10-5,10-10l-10-25c0,0-20-10-40-10H55c-20,0-40,10-40,10l-10,25C5,60,8,65,15,65z"/>
+  <path class="car-window" d="M52,20h96v25H52V20z"/>
+  <path class="car-window" d="M153,20v25h22l-8-20c0,0-6-5-14-5z"/>
+  <path class="car-window" d="M47,20v25H25l8-20c0,0,6-5,14-5z"/>
+  <circle class="car-wheel" cx="50" cy="65" r="13"/>
+  <circle class="car-wheel" cx="150" cy="65" r="13"/>
+  <circle class="car-wheel-rim" cx="50" cy="65" r="7"/>
+  <circle class="car-wheel-rim" cx="150" cy="65" r="7"/>
+  <rect class="car-light" x="15" y="35" width="16" height="7" rx="3"/>
+  <rect class="car-light" x="169" y="35" width="16" height="7" rx="3"/>
+  <rect class="car-chrome" x="35" y="55" width="130" height="3"/>
+  <rect class="car-detail" x="30" y="40" width="7" height="10" rx="2"/>
+  <rect class="car-detail" x="163" y="40" width="7" height="10" rx="2"/>
+  <rect class="car-chrome" x="60" y="50" width="80" height="1"/>
+  <rect class="car-chrome" x="70" y="45" width="60" height="1"/>
+  <rect class="car-badge" x="95" y="30" width="10" height="10" rx="5"/>
+  <text x="100" y="37.5" font-family="Arial" font-size="7" font-weight="bold" text-anchor="middle" fill="#222">VIP</text>
+</svg>

@@ -1,0 +1,57 @@
+{
+  "common": {
+    "login": "Anmelden",
+    "signup": "Registrieren",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "name": "Name",
+    "phone": "Telefon",
+    "search": "Suchen",
+    "from": "Von",
+    "to": "Nach",
+    "date": "Datum",
+    "time": "Zeit",
+    "passengers": "Passagiere",
+    "luggage": "Gepäck",
+    "book": "Buchen",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "submit": "Absenden",
+    "loading": "Wird geladen...",
+    "continueWith": "Fortfahren mit",
+    "or": "oder"
+  },
+  "nav": {
+    "home": "Startseite",
+    "rides": "Fahrten",
+    "support": "Support",
+    "destinations": "Unsere Ziele",
+    "forDrivers": "Für Fahrer",
+    "forBusiness": "Für Unternehmen",
+    "forAgents": "Für Agenten",
+    "feedback": "Feedback",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "settings": "Einstellungen",
+    "profile": "Profil",
+    "logout": "Abmelden"
+  },
+  "home": {
+    "title": "Transfers, Fahrten und Lieferungen in allen Ländern",
+    "priceMatch": "Wir passen den Preis an",
+    "priceMatchDesc": "Wir erstatten die Preisdifferenz",
+    "freeWaiting": "Kostenlose Wartezeit",
+    "freeWaitingDesc": "Wir erlauben 60 Minuten kostenlose Wartezeit an Flughäfen, alle anderen Standorte beinhalten 15 Minuten kostenlose Wartezeit",
+    "noHidden": "Keine versteckten Kosten",
+    "noHiddenDesc": "Steuern, Mautgebühren und Trinkgeld inbegriffen",
+    "safeRides": "Sichere Fahrten",
+    "safeRidesDesc": "Wir sind der Marktplatz, auf dem Sie Ihren Beförderer immer direkt kennen. Alle Beförderer werden sorgfältig überprüft",
+    "ourFleet": "Unsere Flotte"
+  },
+  "booking": {
+    "passengers": "Passagiere",
+    "searchLocation": "Standort suchen...",
+    "nearbyLocations": "Orte in der Nähe",
+    "recommendedDestinations": "Empfohlene Ziele"
+  }
+}

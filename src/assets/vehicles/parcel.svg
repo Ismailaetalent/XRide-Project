@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
+  <style>
+    .box { fill: #f5a623; }
+    .box-shadow { fill: #e09613; }
+    .box-tape { fill: #9b650e; }
+    .label { fill: white; }
+    .label-text { fill: #4a4a4a; }
+  </style>
+  <path class="box-shadow" d="M30,75l70,10l70-10l-70-10L30,75z"/>
+  <path class="box" d="M30,35v40l70,10V45L30,35z"/>
+  <path class="box" d="M170,35v40l-70,10V45L170,35z"/>
+  <path class="box" d="M30,35l70-10l70,10l-70,10L30,35z"/>
+  <path class="box-tape" d="M100,25v30M65,38l70,10"/>
+  <rect class="label" x="70" y="50" width="60" height="20" rx="2"/>
+  <text class="label-text" x="100" y="64" font-family="Arial" font-size="12" text-anchor="middle">PARCEL</text>
+</svg>
